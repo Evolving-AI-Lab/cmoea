@@ -1,0 +1,47 @@
+#! /usr/bin/env python
+from waflib.Configure import conf
+import sferes
+import traceback
+import os
+import sys
+
+CURRENT_DIR = "exp/cmoea_example"
+
+def options(opt):
+    try:
+        variants_file = os.path.join(CURRENT_DIR, "variants.py")
+        if not os.path.exists(variants_file):
+            with open(variants_file, "w") as var_file:
+                var_file.write("#! /usr/bin/env python\n")
+                var_file.write("# This is an automatically generated variants file, for creating all your experimental variants.\n")
+                var_file.write("# In contrast to most automatically generated files, feel free to edit this one; that what it's for.\n")
+                var_file.write("# The script creating this file will only be created it if it doesn't exists yet, so your file will\n")
+                var_file.write("# not be overwritten.\n")
+                var_file.write("from waflib.Configure import conf\n")
+                var_file.write("import sferes\n")
+                var_file.write("\n")
+                var_file.write("def build(bld):\n")
+                var_file.write("    uselib_ = 'TBB BOOST EIGEN'\n")
+                var_file.write("    cxxflags_kdtree = bld.get_env()['CXXFLAGS', '-I.', '-DLIBSSRCKDTREE_HAVE_BOOST']\n")
+                var_file.write("\n")
+                var_file.write("    # Basic version of the maze problem, for quickly testing that everything compiles correctly.\n")
+                var_file.write("    if(True):\n")
+                var_file.write("        sferes.create_variants(bld,\n")
+                var_file.write("        source = 'cmoea_example.cpp',\n")
+                var_file.write("        use = 'sferes2',\n")
+                var_file.write("        uselib = uselib_,\n")
+                var_file.write("        target = 'maze',\n")
+                var_file.write("        cxxflags = cxxflags_kdtree,\n")
+                var_file.write("        variants = ['RLS CMOEA'])\n")
+    except:
+        traceback.print_exc()
+
+
+def build(bld):
+    print "Loading variants"
+    try:
+        sys.path.append(CURRENT_DIR)
+        import variants
+        variants.build(bld)
+    except:
+        traceback.print_exc()
