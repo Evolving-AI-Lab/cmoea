@@ -229,7 +229,6 @@ int main(int argc, char **argv) {
     time_t t = time(0) + ::getpid();
     std::cout<<"seed: " << t << std::endl;
     srand(t);
-    sferes::misc::seed(t);
 
     /* Fitness function to use (a class, defined above), which makes use of the
      * Params struct. */

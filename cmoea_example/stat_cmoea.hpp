@@ -21,7 +21,6 @@
 
 #include <sferes/dbg/dbg.hpp>
 
-#include <modules/continue/global_options.hpp>
 #include <modules/datatools/common_compare.hpp>
 #include <modules/cmoea/cmoea_util.hpp>
 
