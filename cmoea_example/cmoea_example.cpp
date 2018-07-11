@@ -22,7 +22,7 @@
 #include <modules/cmoea/cmoea_util.hpp>
 #include <modules/cmoea/cmoea_nsga2.hpp>
 #include <modules/nsgaext/dom_sort_no_duplicates.hpp>
-#include <modules/misc/common_compare.hpp>
+#include <modules/datatools/common_compare.hpp>
 
 // Include local
 #include <stat_cmoea.hpp>

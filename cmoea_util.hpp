@@ -8,7 +8,7 @@
 #ifndef MODULES_CMOEA_CMOEA_UTIL_HPP_
 #define MODULES_CMOEA_CMOEA_UTIL_HPP_
 
-#include <modules/misc/common_compare.hpp>
+#include <modules/datatools/common_compare.hpp>
 
 namespace sferes {
 namespace cmoea {
